@@ -5,8 +5,6 @@ import { $, $Create } from "../functions/Foxes.js";
  *
 */
 export class Component {
-    main;
-    feather;
     /**
      *
      * @param {{main?: $FoxElm, feather?: $FoxElm,start?: boolean,children?: $FoxElm[],settings?: SettingsFox}} param0

@@ -475,6 +475,7 @@ export interface geralConvertor {
     to: conversorTo,
     value: any
 }
+
 export interface genRandomType {
     templateMask?: string,
     noNum?: boolean,
@@ -511,3 +512,4 @@ export interface HistoryState{
     content: $FoxElm | $Fox | string,
     settings?: {}
 }
+

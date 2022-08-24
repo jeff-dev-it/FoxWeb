@@ -11,7 +11,6 @@ import { $FoxElm } from "./FoxElm.js";
  *
 */
 export class $Foxes {
-    elms;
     /**
      * @param {string} query
      */

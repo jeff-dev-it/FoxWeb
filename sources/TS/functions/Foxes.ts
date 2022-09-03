@@ -1,18 +1,18 @@
 import { $FoxElm } from "../class/FoxElm.js";
 import { $Foxes as FoxesGet } from "../class/FoxesGet.js";
 import { $Fox as FoxGet } from "../class/FoxGet.js";
-import { SettingsFox } from "../Interface.Fox.d";
-import { FoxElement } from "../Types.Fox.d";
+import { SettingsFox } from "../interfaces/Interface.Fox";
+import { FoxElement } from "../interfaces/Types.Fox";
 
 /**
- * @typedef { import("../Interface.Fox").StylesFoxes } StylesFoxes
- * @typedef { import("../Interface.Fox").SettingsFox } SettingsFox
- * @typedef { import("../Types.Fox").FoxElement} FoxElement
- * @typedef { import("../Types.Fox").FoxENV} FoxENV
- * @typedef { import("../Types.Fox").ConversorTo} ConversorTo
- * @typedef { import("../Types.Fox").FoxEvents} FoxEvents
- * @typedef { import("../Types.Fox").FoxTags} FoxTags
- * @typedef { import("../Types.Fox").FoxElm} $FoxElm
+ * @typedef { import("../interfaces/Interface.Fox.d.ts").StylesFoxes } StylesFoxes
+ * @typedef { import("../interfaces/Interface.Fox.d.ts").SettingsFox } SettingsFox
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxElement} FoxElement
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxENV} FoxENV
+ * @typedef { import("../interfaces/Types.Fox.ts").ConversorTo} ConversorTo
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxEvents} FoxEvents
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxTags} FoxTags
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxElm} $FoxElm
  * 
 */
 /**
@@ -46,7 +46,7 @@ export function $Foxes(query: string){
  * @returns {$FoxElm}
  */
 export function $Create(tagName: string, settings:SettingsFox): $FoxElm{
-    const newElement = $(document.createElement(tagName));
+    const newElement = $(document?.createElement(tagName));
 
     newElement.SetSetting({...settings})
 

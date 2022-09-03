@@ -1,6 +1,6 @@
-import { $FoxElm } from "./class/FoxElm.js"
-import { $Fox } from "./class/FoxGet.js"
-import { alignTxt, FoxHTTPMethod, justify, overflow as overflowStyles } from "./Types.Fox.d"
+import { $FoxElm } from "../class/FoxElm.js"
+import { $Fox } from "../class/FoxGet.js"
+import { alignTxt, FoxHTTPMethod, justify, overflow as overflowStyles } from "./Types.Fox"
 
 export interface StylesFoxes{
     justifyContent?: justify,
@@ -471,11 +471,6 @@ export interface SettingsFox{
     feather?: $FoxElm
 }
 
-export interface geralConvertor {
-    to: conversorTo,
-    value: any
-}
-
 export interface genRandomType {
     templateMask?: string,
     noNum?: boolean,
@@ -506,10 +501,3 @@ export interface FoxReq {
     status?: number;
     statusText?: string;
 }
-
-export interface HistoryState{
-    toPath: string,
-    content: $FoxElm | $Fox | string,
-    settings?: {}
-}
-

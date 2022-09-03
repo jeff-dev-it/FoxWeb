@@ -1,13 +1,13 @@
 import { $FoxElm } from "./FoxElm.js";
 /**
- * @typedef { import("../Interface.Fox").StylesFoxes } StylesFoxes
- * @typedef { import("../Interface.Fox").SettingsFox } SettingsFox
- * @typedef { import("../Types.Fox").FoxElement} FoxElement
- * @typedef { import("../Types.Fox").FoxENV} FoxENV
- * @typedef { import("../Types.Fox").ConversorTo} ConversorTo
- * @typedef { import("../Types.Fox").FoxEvents} FoxEvents
- * @typedef { import("../Types.Fox").FoxTags} FoxTags
- * @typedef { import("../Types.Fox").FoxElm} $FoxElm
+ * @typedef { import("../interfaces/Interface.Fox.d.ts").StylesFoxes } StylesFoxes
+ * @typedef { import("../interfaces/Interface.Fox.d.ts").SettingsFox } SettingsFox
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxElement} FoxElement
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxENV} FoxENV
+ * @typedef { import("../interfaces/Types.Fox.ts").ConversorTo} ConversorTo
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxEvents} FoxEvents
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxTags} FoxTags
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxElm} $FoxElm
  *
 */
 export class $Foxes {
@@ -16,7 +16,7 @@ export class $Foxes {
      */
     constructor(query) {
         this.elms = [];
-        let elms = document.querySelectorAll(query);
+        let elms = document?.querySelectorAll(query);
         let i = 0;
         for (let c of elms) {
             let a = c;
@@ -25,6 +25,15 @@ export class $Foxes {
             this[i] = a;
             i++;
         }
+    }
+    /**
+    * Personalize todos os elementos
+    * @param {StylesFoxes} style
+    */
+    $Styles(style) {
+        this.elms.forEach(v => {
+            v.$Styles(style);
+        });
     }
     /**
      * Obtenha o conteúdo que está escrito no elemento

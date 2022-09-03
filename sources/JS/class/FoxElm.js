@@ -10,16 +10,16 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _$FoxElm_oldContent;
-import { IsFoxComponent, IsFoxElement } from "../functions/InstanceOf.js";
+import { IsFoxElement } from "../functions/InstanceOf.js";
 /**
- * @typedef { import("../Interface.Fox").StylesFoxes } StylesFoxes
- * @typedef { import("../Interface.Fox").SettingsFox } SettingsFox
- * @typedef { import("../Types.Fox").FoxElement} FoxElement
- * @typedef { import("../Types.Fox").FoxENV} FoxENV
- * @typedef { import("../Types.Fox").ConversorTo} ConversorTo
- * @typedef { import("../Types.Fox").FoxEvents} FoxEvents
- * @typedef { import("../Types.Fox").FoxTags} FoxTags
- * @typedef { import("../Types.Fox").FoxElm} $FoxElm
+ * @typedef { import("../interfaces/Interface.Fox.d.ts").StylesFoxes } StylesFoxes
+ * @typedef { import("../interfaces/Interface.Fox.d.ts").SettingsFox } SettingsFox
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxElement} FoxElement
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxENV} FoxENV
+ * @typedef { import("../interfaces/Types.Fox.ts").ConversorTo} ConversorTo
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxEvents} FoxEvents
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxTags} FoxTags
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxElm} $FoxElm
  *
 */
 export class $FoxElm {
@@ -217,9 +217,6 @@ export class $FoxElm {
             let chd = child;
             if (IsFoxElement(child)) {
                 elm_.appendChild(chd?.elm);
-            }
-            else if (IsFoxComponent(child)) {
-                elm_.appendChild(chd?.feather.elm);
             }
             else {
                 elm_.appendChild(chd);

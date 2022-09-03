@@ -6,6 +6,8 @@ export type FoxTags = "button" | "input" | "div";
 
 export type conversorTo = "str" | "obj" | "num" | "JSON" | "obj"
 
+
+
 export type justify = "baseline" | "center" | "flex-start" | "flex-end" | "space-around" | "space-between" | "space-evenly"
 export type alignTxt = "center" | "end" | "left" | "justify" | "right" | "start";
 export type overflow = "hidden" | "auto" | "scroll" | "visible"

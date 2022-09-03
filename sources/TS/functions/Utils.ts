@@ -1,15 +1,12 @@
 // Math Function
 
 import { IsNum } from "./VerifyTypes.js";
-import convertor from "./Conversor.js";
-import { genRandomType } from "../Interface.Fox.js";
+import { genRandomType } from "../interfaces/Interface.Fox.js";
 
 /**
- * @typedef { import("../Interface.Fox").genRandomType } genRandomType
+ * @typedef { import("../interfaces/Interface.Fox.d.ts").genRandomType } genRandomType
  * 
 */
-
-const {ToNum, ToInt} = convertor; 
 
 /**
  * Gere um número aleatório
@@ -28,8 +25,8 @@ export function GenRandom(min: number, max: number): number {
  */
 export function RoundNum(num: number): number {
     let numbers = num.toString().split(".")
-    if ((numbers[1] == undefined && IsNum(numbers[0])) || ToNum(numbers[1]) <= 4) return ToInt(`${num}`);
-    else if (ToNum(numbers[1]) >= 5) return ToInt(`${num}`) + 1;
+    if ((numbers[1].toNum() == undefined && numbers[0].toInt() || numbers[1].toInt() <= 4)) return `${num}`.toInt();
+    else if (numbers[1].toNum() >= 5) return `${num}`.toInt() + 1;
     else throw new Error("Operação inválida!");
 }
 
@@ -42,7 +39,7 @@ export function RoundNum(num: number): number {
  * @returns {number}
  */
 export function RoundNumDown(num: number): number {
-    return ToInt(`${num}`)
+    return `${num}`.toInt()
 }
 
 /**
@@ -54,7 +51,7 @@ export function RoundNumDown(num: number): number {
 * @returns {number}
 */
 export function RoundNumUp(num: number): number {
-    return (ToInt(`${num}`) + 1)
+    return `${num}`.toInt() + 1
 }
 
 // String and Array Working

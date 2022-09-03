@@ -1,14 +1,15 @@
+import { StylesFoxes } from "../interfaces/Interface.Fox.js";
 import { $FoxElm } from "./FoxElm.js";
 
 /**
- * @typedef { import("../Interface.Fox").StylesFoxes } StylesFoxes
- * @typedef { import("../Interface.Fox").SettingsFox } SettingsFox
- * @typedef { import("../Types.Fox").FoxElement} FoxElement
- * @typedef { import("../Types.Fox").FoxENV} FoxENV
- * @typedef { import("../Types.Fox").ConversorTo} ConversorTo
- * @typedef { import("../Types.Fox").FoxEvents} FoxEvents
- * @typedef { import("../Types.Fox").FoxTags} FoxTags
- * @typedef { import("../Types.Fox").FoxElm} $FoxElm
+ * @typedef { import("../interfaces/Interface.Fox.d.ts").StylesFoxes } StylesFoxes
+ * @typedef { import("../interfaces/Interface.Fox.d.ts").SettingsFox } SettingsFox
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxElement} FoxElement
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxENV} FoxENV
+ * @typedef { import("../interfaces/Types.Fox.ts").ConversorTo} ConversorTo
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxEvents} FoxEvents
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxTags} FoxTags
+ * @typedef { import("../interfaces/Types.Fox.ts").FoxElm} $FoxElm
  * 
 */
 
@@ -21,7 +22,7 @@ export class $Foxes{
     constructor(query: string){
         this.elms = [];
 
-        let elms = document.querySelectorAll(query);
+        let elms = document?.querySelectorAll(query);
         let i = 0;
         for(let c of elms){
             let a:any = c
@@ -30,6 +31,16 @@ export class $Foxes{
             this[i] = a;
             i++;
         } 
+    }
+
+     /**
+     * Personalize todos os elementos
+     * @param {StylesFoxes} style
+     */
+    $Styles(style: StylesFoxes){
+        this.elms.forEach(v=>{
+            v.$Styles(style);
+        })
     }
 
     /**
@@ -99,7 +110,7 @@ export class $Foxes{
      * delete uma prop
      * @param {string} target 
      */
-     DeleteProps(target: string){
+    DeleteProps(target: string){
         for(let d of this.elms){
             d.elm?.removeAttribute(target)   
         }
@@ -122,7 +133,7 @@ export class $Foxes{
      * @param {number} index 
      * @returns {string[] | string}
      */
-    GetVal(index?: number){
+    GetVal(index?: number): string[] | string{
         const list = []; 
         for(let d of this.elms){
             let elm_:any = d.elm

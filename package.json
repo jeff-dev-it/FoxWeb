@@ -1,0 +1,24 @@
+{
+  "name": "@jeff_dev_it/foxweb",
+  "version": "1.0.6",
+  "description": "FoxWeb is a JS script that aims to make JS easier. It can be used on both frontend and backend. More info in https://github.com/Nhac-dev/FoxWeb",
+  "main": "./JS/FoxWeb.js",
+  "scripts": {
+    "test": "echo \"Teste\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nhac-dev/FoxWeb.git"
+  },
+  "keywords": [
+    "JS",
+    "FoxWeb",
+    "Js Shortener"
+  ],
+  "author": "Jefferson Silva De Souza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nhac-dev/FoxWeb/issues"
+  },
+  "homepage": "https://github.com/Nhac-dev/FoxWeb#readme"
+}

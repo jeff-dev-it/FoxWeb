@@ -1,4 +1,7 @@
-import { $FoxElm } from "./FoxElm.js";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.$Foxes = void 0;
+const FoxElm_js_1 = require("./FoxElm.js");
 /**
  * @typedef { import("../interfaces/Interface.Fox.d.ts").StylesFoxes } StylesFoxes
  * @typedef { import("../interfaces/Interface.Fox.d.ts").SettingsFox } SettingsFox
@@ -10,7 +13,7 @@ import { $FoxElm } from "./FoxElm.js";
  * @typedef { import("../interfaces/Types.Fox.ts").FoxElm} $FoxElm
  *
 */
-export class $Foxes {
+class $Foxes {
     /**
      * @param {string} query
      */
@@ -20,7 +23,7 @@ export class $Foxes {
         let i = 0;
         for (let c of elms) {
             let a = c;
-            a = new $FoxElm(a);
+            a = new FoxElm_js_1.$FoxElm(a);
             this.elms.push(a);
             this[i] = a;
             i++;
@@ -148,3 +151,4 @@ export class $Foxes {
         }
     }
 }
+exports.$Foxes = $Foxes;

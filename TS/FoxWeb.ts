@@ -4,7 +4,7 @@ import {IsArray, IsMatriz, IsNum, IsObj} from "./functions/VerifyTypes.js"
 import { IsFoxElement } from "./functions/InstanceOf.js";
 import "./preload.js"
 
-export default {
+export const FoxModule = {
     DOM: {
         $,
         $Fox,

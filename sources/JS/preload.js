@@ -33,7 +33,7 @@ Number.prototype[Symbol.iterator] = function () {
     };
 };
 Object.prototype.toString = function () {
-    return JSON.stringify(this, null, 3);
+    return JSON.stringify(this);
 };
 Object.prototype.values = function () {
     return Object.values(this);
@@ -69,7 +69,7 @@ String.prototype.toInt = function () {
     }
 };
 String.prototype.toFloat = function (x) {
-    const num_val = this.toInt();
+    const num_val = this.toNum();
     if (IsNum(num_val)) {
         return Math.floor(num_val).toFixed(x);
     }

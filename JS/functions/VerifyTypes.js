@@ -1,39 +1,33 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.IsMatriz = exports.IsArray = exports.IsObj = exports.IsNum = void 0;
 /**
  * Verifica se o elemento é um número ou não
  * @param {string} target - Valor a ser analisado
  * @returns {true|false}
  */
-function IsNum(target) {
+export function IsNum(target) {
     return (target < 0) || (target >= 0);
 }
-exports.IsNum = IsNum;
 /**
  * Verifica se o elemento é um Objeto(não array) ou não
  * @param {string} target - Valor a ser analisado
  * @returns {true|false}
  */
-function IsObj(target) {
+export function IsObj(target) {
     return (typeof target === "object" && Array.isArray(target) === false);
 }
-exports.IsObj = IsObj;
 /**
  * Verifica se o elemento é um Array ou não
  * @param {string} target - Valor a ser analisado
  * @returns {true|false}
  */
-function IsArray(target) {
+export function IsArray(target) {
     return Array.isArray(target) === true;
 }
-exports.IsArray = IsArray;
 /**
  * Verifica se o elemento é uma matriz ou não
  * @param {string} target - Valor a ser analisado
  * @returns {true|false}
  */
-function IsMatriz(target) {
+export function IsMatriz(target) {
     let is = new Array();
     if (IsArray(target)) {
         is.push(true);
@@ -43,4 +37,3 @@ function IsMatriz(target) {
     }
     return !is.includes(false);
 }
-exports.IsMatriz = IsMatriz;

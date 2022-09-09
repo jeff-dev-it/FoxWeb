@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.$Create = exports.$Foxes = exports.$ = exports.$Fox = void 0;
-const FoxElm_js_1 = require("../class/FoxElm.js");
-const FoxesGet_js_1 = require("../class/FoxesGet.js");
-const FoxGet_js_1 = require("../class/FoxGet.js");
+import { $FoxElm } from "../class/FoxElm.js";
+import { $Foxes as FoxesGet } from "../class/FoxesGet.js";
+import { $Fox as FoxGet } from "../class/FoxGet.js";
 /**
  * @typedef { import("../interfaces/Interface.Fox.d.ts").StylesFoxes } StylesFoxes
  * @typedef { import("../interfaces/Interface.Fox.d.ts").SettingsFox } SettingsFox
@@ -20,37 +17,33 @@ const FoxGet_js_1 = require("../class/FoxGet.js");
  * @param {string} query
  * @returns
  */
-function $Fox(query) {
-    return new FoxGet_js_1.$Fox(query);
+export function $FoxGet(query) {
+    return new FoxGet(query);
 }
-exports.$Fox = $Fox;
 /**
  *
  * @param {FoxElement} legacyElement
  * @returns
  */
-function $(legacyElement) {
-    return new FoxElm_js_1.$FoxElm(legacyElement);
+export function $(legacyElement) {
+    return new $FoxElm(legacyElement);
 }
-exports.$ = $;
 /**
  *
  * @param {string} query
  * @returns
  */
-function $Foxes(query) {
-    return new FoxesGet_js_1.$Foxes(query);
+export function $FoxesGet(query) {
+    return new FoxesGet(query);
 }
-exports.$Foxes = $Foxes;
 /**
  *
  * @param {string} tagName
  * @param {SettingsFox} settings
  * @returns {$FoxElm}
  */
-function $Create(tagName, settings) {
+export function $Create(tagName, settings) {
     const newElement = $(document?.createElement(tagName));
     newElement.SetSetting({ ...settings });
     return newElement;
 }
-exports.$Create = $Create;

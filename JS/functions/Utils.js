@@ -1,8 +1,5 @@
-"use strict";
 // Math Function
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.FindAllIndex = exports.MaskText = exports.GenRandomText = exports.RoundNumUp = exports.RoundNumDown = exports.RoundNum = exports.GenRandom = void 0;
-const VerifyTypes_js_1 = require("./VerifyTypes.js");
+import { IsNum } from "./VerifyTypes.js";
 /**
  * @typedef { import("../interfaces/Interface.Fox.d.ts").genRandomType } genRandomType
  *
@@ -13,16 +10,15 @@ const VerifyTypes_js_1 = require("./VerifyTypes.js");
  * @param {number} max bote o valor máximo a ser retornado
  * @returns {number}
  */
-function GenRandom(min, max) {
+export function GenRandom(min, max) {
     return RoundNum(Math.random() * (max - min) + min);
 }
-exports.GenRandom = GenRandom;
 /**
  * Arredonde o número de forma lógica
  * @param {number} num
  * @returns {number}
  */
-function RoundNum(num) {
+export function RoundNum(num) {
     let numbers = num.toString().split(".");
     if ((numbers[1].toNum() == undefined && numbers[0].toInt() || numbers[1].toInt() <= 4))
         return `${num}`.toInt();
@@ -31,7 +27,6 @@ function RoundNum(num) {
     else
         throw new Error("Operação inválida!");
 }
-exports.RoundNum = RoundNum;
 /**
  * Arredonde o número para baixo
  * EX: 1.6
@@ -40,10 +35,9 @@ exports.RoundNum = RoundNum;
  * @param {number} num
  * @returns {number}
  */
-function RoundNumDown(num) {
+export function RoundNumDown(num) {
     return `${num}`.toInt();
 }
-exports.RoundNumDown = RoundNumDown;
 /**
 * Arredonde o número para cima
 * EX: 1.2
@@ -52,10 +46,9 @@ exports.RoundNumDown = RoundNumDown;
 * @param {number} num
 * @returns {number}
 */
-function RoundNumUp(num) {
+export function RoundNumUp(num) {
     return `${num}`.toInt() + 1;
 }
-exports.RoundNumUp = RoundNumUp;
 // String and Array Working
 /**
  * Gere um texto aleatório, defina o limite máximo dele.
@@ -68,7 +61,7 @@ exports.RoundNumUp = RoundNumUp;
  * O Atributo firstChar deve ser um valor em string, que deve ser o primeiro carácter.
  * @returns {string}
  */
-function GenRandomText(maxLength, settings) {
+export function GenRandomText(maxLength, settings) {
     let allChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let spacialChar = "*&¨%$#@!+_)([]{}`^~Ç/:?|'\"\\|";
     let endIndexOf = {
@@ -83,7 +76,7 @@ function GenRandomText(maxLength, settings) {
             ranText += settings?.firstChar;
             continue;
         }
-        if (settings?.noNum == true && (0, VerifyTypes_js_1.IsNum)(allChar[ranNum])) {
+        if (settings?.noNum == true && IsNum(allChar[ranNum])) {
             l--;
             continue;
         }
@@ -113,7 +106,6 @@ function GenRandomText(maxLength, settings) {
     }
     return ranText;
 }
-exports.GenRandomText = GenRandomText;
 /**
  * Mascare sua string, defina o template exemplo:
  * "###.###.###-##"
@@ -125,7 +117,7 @@ exports.GenRandomText = GenRandomText;
  * @param {string} template - Templete - use as # para definir o valor para ser substituído
  * @returns {string}
  */
-function MaskText(text, template) {
+export function MaskText(text, template) {
     let indexText = text.length;
     let indexMask = FindAllIndex(template, "#").length;
     let returnText = template;
@@ -139,7 +131,6 @@ function MaskText(text, template) {
     }
     return returnText;
 }
-exports.MaskText = MaskText;
 /**
  * Uma das coisas mais chatas, é verificar os arrays, e essa função retorna todos os indices de um determinado valor no array ou string.
  * Desde que, haja valores repetidos.
@@ -147,7 +138,7 @@ exports.MaskText = MaskText;
  * @param {string|any} ofItem - Vetor mãe
  * @returns {number[]}
  */
-function FindAllIndex(ofItem, to) {
+export function FindAllIndex(ofItem, to) {
     let found = new Array();
     let counter = 0;
     for (let item of ofItem) {
@@ -159,4 +150,3 @@ function FindAllIndex(ofItem, to) {
     }
     return found;
 }
-exports.FindAllIndex = FindAllIndex;

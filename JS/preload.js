@@ -1,12 +1,10 @@
-"use strict";
 /**
  * @typedef { import("./lib.ef22.ts").Number } Number
  * @typedef { import("./lib.ef22.ts").String } String
  * @typedef { import("./lib.ef22.ts").Object } Object
  *
 */
-Object.defineProperty(exports, "__esModule", { value: true });
-const VerifyTypes_js_1 = require("./functions/VerifyTypes.js");
+import { IsNum } from "./functions/VerifyTypes.js";
 Number.prototype.format = function (x) {
     let template = "0".repeat(x);
     let numBase = this.toString();
@@ -54,7 +52,7 @@ String.prototype.toObject = function () {
     }
 };
 String.prototype.toNum = function () {
-    if ((0, VerifyTypes_js_1.IsNum)(this)) {
+    if (IsNum(this)) {
         return Number(this);
     }
     else {
@@ -63,7 +61,7 @@ String.prototype.toNum = function () {
 };
 String.prototype.toInt = function () {
     const num_val = this.toNum();
-    if ((0, VerifyTypes_js_1.IsNum)(num_val)) {
+    if (IsNum(num_val)) {
         return Math.floor(num_val);
     }
     else {
@@ -72,7 +70,7 @@ String.prototype.toInt = function () {
 };
 String.prototype.toFloat = function (x) {
     const num_val = this.toNum();
-    if ((0, VerifyTypes_js_1.IsNum)(num_val)) {
+    if (IsNum(num_val)) {
         return Math.floor(num_val).toFixed(x);
     }
     else {

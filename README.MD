@@ -4,85 +4,44 @@
 
 FoxWeb is a JS script that aims to make JS easier. It can be used on both frontend and backend.
 
-- On Browser
+- In the browser
 ```
 <script type="module">
-    import FoxModule from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/sources/JS/FoxWeb.js"
+    import {FoxModule} from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/JS/FoxWeb.js"
 
     ...
 </script>
 ```
 
-- On NodeJs
-```
-$ cd ./my_projects
-$ git clone https://github.com/Nhac-dev/FoxWeb
-``` 
-* * On package.json 
-```
-{
-    ...
-    "type": "module",
-    ...
-}
-```
-* * On index.js 
-```
-import FoxModule from "./FoxWeb/sources/JS/FoxWeb.js"
-...
-```
-If you want to use commonjs mode do:
-```
-$ cd ./my_projects
-$ git clone https://github.com/Nhac-dev/FoxWeb
-$ cd ./FoxWeb
-``` 
-Open the tsconfig.json and edit:
-```
-{
-    ...
-    "module": "CommonJS",
-    ...
-}
-```
-And run the 
-```
-$ tsc
-```
-* * On index.js 
-```
-const FoxModule = require("./FoxWeb/sources/JS/FoxWeb.js");
+<a href="https://github.com/Nhac-dev/FoxWebNode">For NodeJS read here</a>
 
-...
+- In the Den
+```
+import FoxModule from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/JS/FoxWeb.js"
 ```
 
-* * On Deno JS
-```
-import FoxModule from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/sources/JS/FoxWeb.js"
-...
-```
 ## Understanding FoxWeb
 
 ### Return objects
 
 | Name | Description |
 |------|-------------|
-| DOM  |Object that contains methods for obtaining dom Elements.|
+| DOM |Object that contains methods for obtaining dom elements.|
 |$VerifyTypes|Object with type checker|
-|$Math|Use the Math Library Easier|
-|$Utils|Make it easy to do some tasks|
+|$Math|Use the math library more easily|
+|$Utils|Make some tasks easier|
 
-## DOM 
-> Work only in browser.
+## SUN
+> Works in browser only.
 
-| Children | Description |
+| Keys | Description |
 |------|----------------|
 |$|Transform a DOM element into a DOMFOX.|
 |$Fox|Get a DOM object|
-|$Foxes|Get many DOM object|
-|$Create|Create a Object DOM|
+|$Foxes|Get too many DOM objects|
+|$Create|Create a DOM object|
 
-* Transform legacy in DOM FOX
+* Transform DOM element into DOM FOX
 ```
 import FoxModule from "./FoxWeb/sources/JS/FoxWeb.js";
 const {DOM} = FoxModule;
@@ -92,42 +51,104 @@ const myFoxElement = DOM.$(myElement);
 ```
 
 
-* Get a DOM FOX
+* Get a FOX DOM
 ```
 const myFoxElement = DOM.$Fox("#my-element");
 ```
-* Create a DOM FOX
+* Create a FOX DOM
 ```
 const myFoxElement = DOM.$Create("div", {
     id: "example-create",
     class: ["card", "Hello"],
-    feather: myFoxElement 
+    feather: myFoxElement
 });
 // DOM.$Create(tagname, settings_initial?);
-// All Value of settings_initial is optional
+// All settings_initial value is optional
 ```
 
+## DOM manipulation
+
+```
+element.$Env("event_name", (e)=>{...});
+.OnPress(func) // Execute func on click event
+.OnRightPress(func) // Execute func on right click event
+.OnHover(func) // Execute the func event when the mouse enters the element
+.OnHoverOut(func)// Executes the func event when the mouse leaves the element
+.OnSubmit(func) // Execute the func event when the form is submitted
+.OnChange(func)// Executes func the event changes the input value
+.OnKeyDown(func) // When a key is clicked
+.OnKeyUp(func) // When the key is released
+.OnKeyPress(func) // When pressing the key
+
+.GetContent(type="txt") // Returns the content of the element, type: "html" || "txt"
+.GetHTML() // Returns the html content
+.GetTXT() // Returns the content of text
+.SetContent(type="txt", content, add?=false)
+//Put content in the element
+.SetHTML(content)
+.SetTXT(content)
+.AddHTML(content)
+.AddTXT(content)
+.Remove() // Remove it from the parent element
+.RemoveChild(index) // remove a child element(by index)
+.GetChild(index)//Get a child element
+.AddChild(...child) // Add a child element
+.$Styles({object}) // Add style to element
+.AddClass(...class) // Add one/or more class/s
+.DeleteClass(...class) // Remove one/or more class/s
+.AddProps(prop, value) // add a property
+.DeleteProps(prop) // Remove a property
+.GetProps(prop) // Get a prop
+.SetID(ID) // add an ID to the element
+.GetVal() // Get the value of "value"
+.SetSettings(settings) // Add settings
+```
+In the element returned by $Foxes these properties can be accessed to manipulate all of that array, obs. Some of these methods are not present in Foxes. Only on individual items.
+```
+elmFoxes[0]
+// or
+elmFoxes.elms[0]
+```
+
+### About SetSettings
+The parameter value should be something like:
+```
+{
+    id?: String, // id
+    typeBtn?: "button" | "submit" // button type
+    typeInput?: "text" | "email" | "password" | "search" | "date", // input type
+    placeholder?: string, // placeholder if input
+    class?: string[], // classes ["str", "a"]
+    initialInputValue?: string, // initial value (input)
+    text?: string, // text
+    textHTML?: string, // HTML text
+    rel?: string, // value of the rel attribute
+    href?: string, // Value of href
+    style?: StylesFoxes, // styles in object form
+    feather?: $FoxElm // Parent Element
+}
+```
 
 ## $VerifyTypes
 
 
-| Children | Description |
+| Keys | Description |
 |------|----------------|
-|IsArray|Verify if value is a array|
-|IsNum|Verify if value is a number|
-|IsObj|Verify if value is a object|
+|IsArray|Check if the value is an array|
+|IsNum|Check if the value is a number|
+|IsObj|Check if value is an object|
 
-* IsArray
+* isArray
 
 ```
-const languages = ["JS", "Go", "Rust"];
+const languages ​​= ["JS", "Go", "Rust"];
 const myFavLang = languages[1]; // Go
 
 console.log($VerifyTypes.IsArray(languages)) // true
 console.log($VerifyTypes.IsArray(myFavLang)) // false
 ```
 
-* IsNum
+* ÉNum
 
 ```
 const {IsNum} = $VerifyTypes;
@@ -137,16 +158,16 @@ const num3 = "20"
 
 console.log(IsNum(num1), IsNum(num2), IsNum(num3))
 // output: true, false, true
-// Even though it's a string it should return true if it's a number
+// Even though it's a string, it should return true if it's a number
 ```
 
-* IsObject
+* isObject
 ```
 const foxInfo = {
-    author: "Jefferson",
+    Author: "Jefferson",
     packageName: "FoxWeb"
 };
-const languages = ["JS", "Go", "Rust"];
+const languages ​​= ["JS", "Go", "Rust"];
  
 console.log(IsObj(foxInfo), IsObj(languages))
 
@@ -157,14 +178,14 @@ console.log(IsObj(foxInfo), IsObj(languages))
 ## $Math
 
 
-| Children | Description |
+| Keys | Description |
 |------|----------------|
-|RoundNum|Logical Round Num|
-|RoundNumUp|Round num to up 5.4 > 6|
-|RoundNumDown|Round num to down 5.5 > 5|
-|GenRandom|Gen a random num|
+|RoundNum|Logical round number|
+|RoundNumUp|Rounds the numberro up 5,4 > 6|
+|RoundNumDown|Rounds the number down 5.5 > 5|
+|GenRandom|Generate a random number|
 
-* Examples RoundNum
+* RoundNum Examples
 ```
 const n1 = 5.5
 const n2 = 5.4
@@ -172,7 +193,7 @@ const n2 = 5.4
 console.log(
     RoundNum(n1), // 6
     RoundNum(n2), // 5
-    RoundNumUp(n1), // 6 
+    RoundNumUp(n1), // 6
     RoundNumUp(n2), // 6
     RoundNumDown(n1), // 5
     RoundNumDown(n2), // 5
@@ -189,19 +210,19 @@ console.log(randomNum);
 
 ## $Utils
 
-| Children | Description |
+| Keys | Description |
 |------|----------------|
-|FindAllIndex|Find all index of a value in Array/string|
+|FindAllIndex|Find all indexes of a value in Array/string|
 |GenRandomText|Gen random string|
 |MaskText|Mask a text|
 
 * FindAllIndex
 ```
-const languages = ["JS", "Go", "Rust", "JS"];
-const languages_str = "JS, Go, Rust";
+const languages ​​= ["JS", "Go", "Rust", "JS"];
+const language_str = "JS, Go, Rust";
 
-console.log(FindAllIndex(languages, "JS")); // [0, 3] 
-console.log(FindAllIndex(languages_str, "S")); // [1, 10] 
+console.log(FindAllIndex(languages, "JS")); // [0, 3]
+console.log(FindAllIndex(languages_str, "S")); // [1, 10]
 
 // FindAllIndex(arr, item)
 ```
@@ -210,16 +231,16 @@ console.log(FindAllIndex(languages_str, "S")); // [1, 10]
 ```
 const text = GenRandomText(10);
 const text_mask = GenRandomText(10, {
-    noUpChar: true, //The text will not have uppercase letters
-    noLowerChar: true, //The text will not have lowercase letters
-    noSpecial: true, //The text will not have special char
+    noUpChar: true, //Text will not be capitalized
+    noLowerChar: true, //Text will not be lowercase
+    noSpecial: true, //Text will have no special character
     templateMask: "##.##-#(#####)"
 });
 const text_mask2 = GenRandomText(10, {
-    noNum: true, // The text will no have numbers
+    noNum: true, // Text will not have numbers
     firstChar: "r", // The first letter must be "r"
     templateMask: "###.##-#(#####)"
-}); // Error: The template does not match the amount of index of the text
+}); // Error: Template does not match text index amount
 
 // No console.log because all text is random
 ```
@@ -227,7 +248,7 @@ const text_mask2 = GenRandomText(10, {
 * MaskText
 
 ```
-const phone_number = "5500000000000"
+const phone_number = "55000000000000"
 const masked = MaskText(phone_number, "+## (##) #####-####)";
 
 console.log(masked); // +55 (00) 00000-0000
@@ -238,21 +259,19 @@ console.log(masked); // +55 (00) 00000-0000
 ___
 ## Modifications in Native JS
 
-### In Number constructor
-- Add Method format(x) - This method change 1 to "01", "001".
-- Add Iterator
+### In the number constructor
+- Added format(x) method - This method changes from 1 to "01", "001".
+- Added iterator;
 ```
 console.log(10..format("3")); // 010
-console.log([...3], [...-2]); // [0, 1, 2, 3], [0, -1, -2]
+consolee.log([...3], [...-2]); // [0, 1, 2, 3], [0, -1, -2]
 ```
-### In Object constructor
-- Method toString now return JSON string
-- Add Method values, the returns all values of Object 
-- Add Method keys, the returns all keys of Object 
-### In String constructor
-- Add Method toObject, her return a object or null
-- Add Method toNum (convert the string to num)
-- Add Method toInt (convert the string to int num)
-- Add Method toFloat(fractionsDigits) (convert the string to float string(yes to string, example: "1"..ToFloat(2) -> "1.00", "1.234"..toFloat(2) -> "1.23"))
-
-
+### In object constructor
+- The toString method now returns the JSON string
+- Add Method values, returns all Object values
+- Add method keys, returns all object keys
+### In the String constructor
+- Add Method toObject, it returns an object or null
+- Added toNum method (convert string to num)
+- Added toInt method (convert string to int num)
+- Added method toFloat(fractionsDigits) (convert string to float string (yes to string, example: "1"..ToFloat(2) -> "1.00", "1.234"..toFloat(2) -> "1.23" ))

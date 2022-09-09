@@ -20,7 +20,7 @@ import { FoxElement } from "../interfaces/Types.Fox";
  * @param {string} query 
  * @returns 
  */
-export function $Fox(query: string){
+export function $FoxGet(query: string){
     return new FoxGet(query);
 }
 /**
@@ -36,7 +36,7 @@ export function $(legacyElement: FoxElement){
  * @param {string} query 
  * @returns 
  */
-export function $Foxes(query: string){
+export function $FoxesGet(query: string){
     return new FoxesGet(query);
 }
 /**

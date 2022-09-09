@@ -6,61 +6,20 @@ FoxWeb é um script JS que visa tornar o JS mais fácil. Pode ser usado tanto no
 
 - No navegador
 ```
-<script type="módulo">
-    import FoxModule from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/sources/JS/FoxWeb.js"
+<script type="module">
+    import {FoxModule} from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/JS/FoxWeb.js"
 
     ...
 </script>
 ```
 
-- No NodeJs
-```
-$ cd ./my_projects
-$ git clone https://github.com/Nhac-dev/FoxWeb
-```
-* * Arquivo package.json
-```
-{
-    ...
-    "type": "module",
-    ...
-}
-```
-* * Arquivo index.js
-```
-import FoxModule from "./FoxWeb/sources/JS/FoxWeb.js"
-...
-```
-Se você quiser usar o modo commonjs, faça:
-```
-$ cd ./my_projects
-$ git clone https://github.com/Nhac-dev/FoxWeb
-$ cd ./FoxWeb
-```
-Abra o tsconfig.json e edite:
-```
-{
-    ...
-    "module": "CommonJS",
-    ...
-}
-```
-E execute o
-```
-$ tsc
-```
-* * Em index.js
-```
-const FoxModule = require("./FoxWeb/sources/JS/FoxWeb.js");
+<a href="https://github.com/Nhac-dev/FoxWebNode">Para NodeJS leia aqui</a>
 
-...
+- No Deno
+```
+import FoxModule from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/JS/FoxWeb.js"
 ```
 
-* * No Deno JS
-```
-import FoxModule from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/sources/JS/FoxWeb.js"
-...
-```
 ## Entendendo a FoxWeb
 
 ### Retorna objetos
@@ -107,6 +66,68 @@ const myFoxElement = DOM.$Create("div", {
 // Todo o valor de settings_initial é opcional
 ```
 
+## Manipulação DOM
+
+```
+element.$Env("evento_nome", (e)=>{...});
+.OnPress(func) // Executa func no evento de click
+.OnRightPress(func) // Executa func no evento de click com botão direito
+.OnHover(func) // Executa func o evento quando o mouse entra no elemento
+.OnHoverOut(func)// Executa func o evento quando o mouse sai no elemento
+.OnSubmit(func) // Executa func o evento quando o formulário e submitado
+.OnChange(func)// Executa func o evento altera o valor do input 
+.OnKeyDown(func) // Quando clica uma tecla
+.OnKeyUp(func) // Quando solta a tecla
+.OnKeyPress(func) // Quando pressiona a tecla 
+
+.GetContent(tipo="txt") // Retorna o conteúdo do element, tipo: "html" || "txt"
+.GetHTML() // Retorna o conteúdo html
+.GetTXT() // Retorna o conteúdo de text
+.SetContent(tipo="txt", conteúdo, adicionar?=false)
+//Coloque um conteúdo no elemento
+.SetHTML(conteúdo)
+.SetTXT(conteúdo)
+.AddHTML(conteúdo)
+.AddTXT(conteúdo)
+.Remove() // Remove ele do elemento pai
+.RemoveChild(index) // remove um elemento filho(pelo index)
+.GetChild(index)//Obtenha um elemento filho
+.AddChild(...child) // Adicione um elemento filho
+.$Styles({object}) // Adicione estilo ao elemento
+.AddClass(...class) // Adicione uma/ou mais classe/s
+.DeleteClass(...class) // Remova uma/ou mais classe/s
+.AddProps(prop, valor) // adicione uma propriedade
+.DeleteProps(prop) // Remova uma propriedade
+.GetProps(prop) // Obtenha uma prop
+.SetID(ID) // adicione um ID ao elemento
+.GetVal() // Obtenha o valor de "value"
+.SetSettings(settings) // Adicione configurações
+```
+No elemento retornado por $Foxes essas propriedades poderão ser acessadas para manipular todos daquele array, obs. Alguns desses métodos não estão presente no foxes. Apenas nos itens individuais.
+```
+elmFoxes[0] 
+// ou
+elmFoxes.elms[0] 
+```
+
+### Sobre o SetSettings
+O valor do parâmetro deve ser algo como:
+```
+{
+    id?: String, // id
+    typeBtn?: "button" | "submit" // tipo de botão
+    typeInput?: "text" | "email" | "password" | "search" | "date", // tipo de input
+    placeholder?: string, // placeholder se for input
+    class?: string[], // classes ["str", "a"]
+    initialInputValue?: string, // valor inicial (input)
+    text?: string, // texto
+    textHTML?: string, // Texto em HTML
+    rel?: string, // valor do atributo rel
+    href?: string, // Valor de href
+    style?: StylesFoxes, // estilos em forma de objeto
+    feather?: $FoxElm // Elemento Pai
+}
+```
 
 ## $VerifyTypes
 

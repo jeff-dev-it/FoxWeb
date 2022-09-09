@@ -1,4 +1,3 @@
-"use strict";
 var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
@@ -11,9 +10,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _$FoxElm_oldContent;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.$FoxElm = void 0;
-const InstanceOf_js_1 = require("../functions/InstanceOf.js");
+import { IsFoxElement } from "../functions/InstanceOf.js";
 /**
  * @typedef { import("../interfaces/Interface.Fox.d.ts").StylesFoxes } StylesFoxes
  * @typedef { import("../interfaces/Interface.Fox.d.ts").SettingsFox } SettingsFox
@@ -25,7 +22,7 @@ const InstanceOf_js_1 = require("../functions/InstanceOf.js");
  * @typedef { import("../interfaces/Types.Fox.ts").FoxElm} $FoxElm
  *
 */
-class $FoxElm {
+export class $FoxElm {
     /**
      * @param {FoxElement | HTMLElement} elm
      */
@@ -218,7 +215,7 @@ class $FoxElm {
         for (let child of children) {
             let elm_ = this.elm;
             let chd = child;
-            if ((0, InstanceOf_js_1.IsFoxElement)(child)) {
+            if (IsFoxElement(child)) {
                 elm_.appendChild(chd?.elm);
             }
             else {
@@ -368,5 +365,4 @@ class $FoxElm {
         }
     }
 }
-exports.$FoxElm = $FoxElm;
 _$FoxElm_oldContent = new WeakMap();

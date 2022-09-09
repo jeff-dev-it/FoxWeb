@@ -1,4 +1,5 @@
-import FoxModule from  "../../FoxWeb/sources/JS/FoxWeb.js";
+import {FoxModule} from  "../JS/FoxWeb.js";
+
 const {DOM} = FoxModule;
 
 const root = DOM.$Fox("#root");

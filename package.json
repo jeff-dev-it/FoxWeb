@@ -1,5 +1,5 @@
 {
-  "name": "@jeff_dev_it/foxweb",
+  "name": "foxweb-node",
   "version": "1.0.6",
   "description": "FoxWeb is a JS script that aims to make JS easier. It can be used on both frontend and backend. More info in https://github.com/Nhac-dev/FoxWeb",
   "main": "./JS/FoxWeb.js",

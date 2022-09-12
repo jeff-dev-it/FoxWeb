@@ -7,18 +7,18 @@ FoxWeb is a JS script that aims to make JS easier. It can be used on both fronte
 - In the browser
 ```
 <script type="module">
-    import {FoxModule} from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/JS/FoxWeb.js"
+    import {FoxModule} from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 
     ...
 </script>
 ```
 
-<a href="https://github.com/Nhac-dev/FoxWebNode">For NodeJS read here</a>
-
 - In the Den
 ```
-import FoxModule from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/JS/FoxWeb.js"
+import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 ```
+<a href="https://github.com/jefferson-developer-it/FoxWebNode">For NodeJS read here</a>
+
 
 ## Understanding FoxWeb
 
@@ -148,7 +148,7 @@ console.log($VerifyTypes.IsArray(languages)) // true
 console.log($VerifyTypes.IsArray(myFavLang)) // false
 ```
 
-* ÉNum
+* isNum
 
 ```
 const {IsNum} = $VerifyTypes;
@@ -180,8 +180,8 @@ console.log(IsObj(foxInfo), IsObj(languages))
 
 | Keys | Description |
 |------|----------------|
-|RoundNum|Logical round number|
-|RoundNumUp|Rounds the numberro up 5,4 > 6|
+|RoundNum|Number rlogical endondo |
+|RoundNumUp|Rounds the number up 5,4 > 6|
 |RoundNumDown|Rounds the number down 5.5 > 5|
 |GenRandom|Generate a random number|
 

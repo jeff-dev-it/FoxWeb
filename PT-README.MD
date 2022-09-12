@@ -7,18 +7,18 @@ FoxWeb é um script JS que visa tornar o JS mais fácil. Pode ser usado tanto no
 - No navegador
 ```
 <script type="module">
-    import {FoxModule} from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/JS/FoxWeb.js"
+    import {FoxModule} from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 
     ...
 </script>
 ```
 
-<a href="https://github.com/Nhac-dev/FoxWebNode">Para NodeJS leia aqui</a>
-
 - No Deno
 ```
-import FoxModule from "https://cdn.jsdelivr.net/gh/Nhac-dev/FoxWeb@latest/JS/FoxWeb.js"
+import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 ```
+<a href="https://github.com/jefferson-developer-it/FoxWebNode">Para NodeJS leia aqui</a>
+
 
 ## Entendendo a FoxWeb
 
@@ -148,7 +148,7 @@ console.log($VerifyTypes.IsArray(linguagens)) // true
 console.log($VerifyTypes.IsArray(minhaFavLang)) // false
 ```
 
-* ÉNum
+* isNum
 
 ```
 const {IsNum} = $VerifyTypes;

@@ -1,4 +1,4 @@
-import {FoxModule} from  "../JS/FoxWeb.js";
+import {FoxModule} from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 
 const {DOM} = FoxModule;
 

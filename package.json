@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/jefferson-developer-it/FoxWeb/issues"
   },
-  "homepage": "https://github.com/jefferson-developer-it/FoxWeb#readme"
+  "homepage": "https://github.com/jefferson-developer-it/FoxWeb#readme",
+  "dependencies": {
+    "xhr2": "^0.2.1"
+  }
 }

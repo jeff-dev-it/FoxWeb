@@ -1,25 +1,14 @@
-import {FoxModule} from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
+import { FoxModule } from "../JS/FoxWeb.js";
 
-const {DOM} = FoxModule;
+const base = FoxModule.HTTP.RequestInstance("https://jsonplaceholder.typicode.com/")
+const api = base.instance("/todos");
 
-const root = DOM.$Fox("#root");
-const cards = DOM.$Foxes(".card");
-
-root.$Styles({
-    width: "100%",
-    backgroundColor: "#152339",
-    color: "#333",
-    display: "flex"
-});
-
-cards.$Styles({
-    width: "100px",
-    height: "100px",
-    backgroundColor: "#e7e7e7",
-    margin: ".5rem",
-    borderRadius: ".5rem"
+api.send("/1", {
+}).then(d=>{
+    console.log(d.resJSON);
 })
 
-cards[1].$Styles({
-    backgroundColor: "#ff9000"
+api.send("/2", {
+}).then(d=>{
+    console.log(d.resJSON);
 })

@@ -2,6 +2,15 @@ import { $FoxElm } from "../class/FoxElm.js"
 import { $Fox } from "../class/FoxGet.js"
 import { alignTxt, FoxHTTPMethod, justify, overflow as overflowStyles } from "./Types.Fox"
 
+export interface Config{
+    headers?: {
+        [x: string]: any
+    }
+    body?: XMLHttpRequestBodyInit
+    query?: object | string
+    method?: "POST"|"GET"|"POP"|"UPDATE"|"DELETE"
+    signal?: AbortSignal
+}
 export interface StylesFoxes{
     justifyContent?: justify,
     accentColor?: string,

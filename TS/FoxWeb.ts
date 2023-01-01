@@ -2,7 +2,10 @@ import {$, $FoxGet as $Fox, $FoxesGet as $Foxes, $Create} from "./functions/Foxe
 import {FindAllIndex, GenRandom, GenRandomText, MaskText, RoundNum, RoundNumUp, RoundNumDown} from "./functions/Utils.js"
 import {IsArray, IsMatriz, IsNum, IsObj} from "./functions/VerifyTypes.js"
 import { IsFoxElement } from "./functions/InstanceOf.js";
+import { SendRequest } from "./HTTP/request.js";
 import "./preload.js"
+import QueryParser from "./HTTP/queryParser.js";
+import RequestInstance from "./HTTP/instance.js";
 
 export const FoxModule = {
     DOM: {
@@ -29,4 +32,9 @@ export const FoxModule = {
         GenRandomText,
         MaskText
     },
+    HTTP: {
+        SendRequest,
+        QueryParser,
+        RequestInstance
+    }
 };

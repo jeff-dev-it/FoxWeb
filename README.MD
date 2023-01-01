@@ -30,6 +30,7 @@ import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb
 |$VerifyTypes|Object with type checker|
 |$Math|Use the math library more easily|
 |$Utils|Make some tasks easier|
+|HTTP|Perform HTTP Requests|
 
 ## SUN
 > Works in browser only.
@@ -275,3 +276,51 @@ consolee.log([...3], [...-2]); // [0, 1, 2, 3], [0, -1, -2]
 - Added toNum method (convert string to num)
 - Added toInt method (convert string to int num)
 - Added method toFloat(fractionsDigits) (convert string to float string (yes to string, example: "1"..ToFloat(2) -> "1.00", "1.234"..toFloat(2) -> "1.23" ))
+
+# HTTP
+> Use SendRequest to send requests
+```js
+const res = FoxModule.HTTP.SendRequest("http://example.com", {
+     body: {},
+     method: "GET",
+     headers: {
+         "content-type": "application/json"
+     },
+     query: {
+         labelName: "test"
+     }
+})
+
+// FoxModule.HTTP.SendRequest(uri, config?)
+
+
+res.then(rs=>{
+     console.log(rs.res);
+     console.log(rs.resJSON); // Converted JSON object
+})
+```
+
+> Create instances to facilitate your requests:
+```js
+const base = FoxModule.HTTP.RequestInstance("http://www.example.com")
+const api = base.instance("/list");
+
+api.send("/1").then(d=>{
+     console.log(d.resJSON);
+})
+
+// use api.instance to create a new instance
+```
+> Convert query:
+```js
+const myQuery = {
+     name: "jeff",
+     token: "xxx-xxx.23.aa"
+}
+
+const stringQuery = FoxModule.HTTP.QueryParser(myQuery)
+// or: FoxModule.HTTP.QueryParser(myQuery, "string")
+// ?name=jeff&token=xxx-xxx.23.aa
+const objQuery = FoxModule.HTTP.QueryParser("?app=Fox", "object")
+// {app: "Fox"}
+```

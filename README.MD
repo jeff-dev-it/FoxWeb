@@ -7,7 +7,7 @@ FoxWeb is a JS script that aims to make JS easier. It can be used on both fronte
 - In the browser
 ```
 <script type="module">
-    import {FoxModule} from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
+    import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 
     ...
 </script>
@@ -15,7 +15,7 @@ FoxWeb is a JS script that aims to make JS easier. It can be used on both fronte
 
 - In the Deno
 ```
-import `{FoxModule}` from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
+import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 ```
 <a href="https://github.com/jefferson-developer-it/FoxWebNode">For NodeJS read here</a>
 

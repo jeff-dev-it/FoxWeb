@@ -1,5 +1,6 @@
+import { queryParserTo } from "../interfaces/Types.Fox";
 
-export default function QueryParser(value: any, to?: "object"|"string"){
+export default function QueryParser(value: any, to?: queryParserTo){
 
     return to !== "object"? parseObjectQueryToString(value): parseStringQueryToString(value)
 

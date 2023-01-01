@@ -7,7 +7,7 @@ FoxWeb é um script JS que visa tornar o JS mais fácil. Pode ser usado tanto no
 - No navegador
 ```
 <script type="module">
-    import {FoxModule} from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
+    import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 
     ...
 </script>
@@ -15,7 +15,7 @@ FoxWeb é um script JS que visa tornar o JS mais fácil. Pode ser usado tanto no
 
 - No Deno
 ```
-import {FoxModule} from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
+import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 ```
 <a href="https://github.com/jefferson-developer-it/FoxWebNode">Para NodeJS leia aqui</a>
 
@@ -30,6 +30,7 @@ import {FoxModule} from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxW
 |$VerifyTypes|Objeto com verificador de tipo|
 |$Math|Use a biblioteca de matemática com mais facilidade|
 |$Utils|Facilite algumas tarefas|
+|HTTP|Realize Requisições HTTP|
 
 ## DOM
 > Funciona apenas no navegador.
@@ -275,3 +276,51 @@ consolee.log([...3], [...-2]); // [0, 1, 2, 3], [0, -1, -2]
 - Método toNum adicionado (converter a string para num)
 - Método toInt adicionado (converter a string para int num)
 - Método toFloat(fractionsDigits) adicionado (converta a string para float string (sim para string, exemplo: "1"..ToFloat(2) -> "1.00", "1.234"..toFloat(2) -> "1.23" ))
+
+# HTTP
+> Use o SendRequest para enviar requisições
+```js
+const res = FoxModule.HTTP.SendRequest("http://example.com", {
+    body: {},
+    method: "GET",
+    headers: {
+        "content-type": "application/json"
+    },
+    query: {
+        labelName: "teste"
+    }
+})
+
+// FoxModule.HTTP.SendRequest(uri, config?)
+
+
+res.then(rs=>{
+    console.log(rs.res);
+    console.log(rs.resJSON); // Objeto JSON convertido
+})
+```
+
+> Crie instancias para facilitar suas requisições:
+```js
+const base = FoxModule.HTTP.RequestInstance("http://www.example.com")
+const api = base.instance("/list");
+
+api.send("/1").then(d=>{
+    console.log(d.resJSON);
+})
+
+// use api.instance para criar uma nova instancia
+```
+> Converta query:
+```js
+const myQuery = {
+    name: "jeff",
+    token: "xxx-xxx.23.aa"
+}
+
+const stringQuery = FoxModule.HTTP.QueryParser(myQuery)
+// ou: FoxModule.HTTP.QueryParser(myQuery, "string")
+// ?name=jeff&token=xxx-xxx.23.aa
+const objQuery = FoxModule.HTTP.QueryParser("?app=Fox", "object")
+// {app: "Fox"}
+```

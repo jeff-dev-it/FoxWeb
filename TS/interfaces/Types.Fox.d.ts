@@ -14,3 +14,5 @@ export type overflow = "hidden" | "auto" | "scroll" | "visible"
 
 export type commandHistory = "redirect_page"| "redirect_path" | "redirect_state" | "back" | "next" | "reload";
 export type FoxHTTPMethod = "GET" | "POST" | "DELETE"
+
+export type queryParserTo = "object" | "string"

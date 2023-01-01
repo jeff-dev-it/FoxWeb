@@ -25,7 +25,8 @@ const sendReq = (uri, config) => {
         if (config.signal)
             config.signal.onabort = () => {
                 req.abort();
-                res.response = "This call is aborted! :(";
+                res.res = "This call is aborted! :(";
+                res.resText = "This call is aborted! :(";
                 res.status = {
                     number: 0,
                     text: "Aborted!"
@@ -45,7 +46,6 @@ const sendReq = (uri, config) => {
                 res.resURL = req.responseURL;
                 res.resXML = req.responseXML;
                 res.headers = req.getAllResponseHeaders();
-                res.len = req.length;
                 resolve(res);
             }
         };

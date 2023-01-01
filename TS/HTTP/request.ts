@@ -1,4 +1,4 @@
-import { Config } from "../interfaces/Interface.Fox";
+import { Config, HTTPResponse } from "../interfaces/Interface.Fox";
 import ParseQuery from "./queryParser.js";
 
 let Request = null;
@@ -20,7 +20,7 @@ export async function SendRequest(uri: string, config?: Config){
 const sendReq = (uri: string, config?: Config)=>{
     return new Promise((resolve)=>{
         const req: XMLHttpRequest = new Request()
-        const res: any = {}
+        const res: HTTPResponse = {}
 
         req.open(config?.method || "GET", `${uri}${config?.query? ParseQuery(config.query, "string"):""}`, true);
 
@@ -33,7 +33,8 @@ const sendReq = (uri: string, config?: Config)=>{
         if(config.signal) config.signal.onabort = ()=>{
             req.abort()
 
-            res.response = "This call is aborted! :(";
+            res.res = "This call is aborted! :(";
+            res.resText = "This call is aborted! :(";
             res.status = {
                 number: 0,
                 text: "Aborted!"
@@ -55,7 +56,6 @@ const sendReq = (uri: string, config?: Config)=>{
                 res.resURL = req.responseURL
                 res.resXML = req.responseXML
                 res.headers = req.getAllResponseHeaders()
-                res.len = req.length
 
                 resolve(res)    
             }

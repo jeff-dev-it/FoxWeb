@@ -11,6 +11,21 @@ export interface Config{
     method?: "POST"|"GET"|"POP"|"UPDATE"|"DELETE"
     signal?: AbortSignal
 }
+
+export interface HTTPResponse{
+    res?: string, 
+    status?: {
+        text: string,
+        number: number
+    }, 
+    resJSON?: object | string, 
+    typeRes?: XMLHttpRequestResponseType, 
+    resText?: string, 
+    resURL?: string, 
+    resXML?: Document, 
+    headers?: string, 
+}
+
 export interface StylesFoxes{
     justifyContent?: justify,
     accentColor?: string,
@@ -487,26 +502,4 @@ export interface genRandomType {
     noLowerChar?: boolean,
     firstChar?: string
     noSpecial?: boolean
-}
-
-export interface FoxHeaders extends HeadersInit {
-    "Content-Type"?: "application/json" | "text/javascript" | "text/css" | "text/html",
-    "Content-Encoding"?: "utf-8"
-}
-
-export interface FoxReq {
-    body?: BodyInit | JSON | Object | null;
-    cache?: RequestCache;
-    credentials?: RequestCredentials;
-    headers?: FoxHeaders;
-    integrity?: string;
-    keepalive?: boolean;
-    method?: FoxHTTPMethod;
-    mode?: RequestMode;
-    redirect?: RequestRedirect;
-    referrer?: string;
-    referrerPolicy?: ReferrerPolicy;
-    signal?: AbortSignal | null;
-    status?: number;
-    statusText?: string;
 }

@@ -3,6 +3,7 @@
   "version": "1.0.6",
   "description": "FoxWeb is a JS script that aims to make JS easier. It can be used on both frontend and backend. More info in https://github.com/jefferson-developer-it/FoxWeb",
   "main": "./JS/FoxWeb.js",
+  "typings": "./JS/FoxWeb.d.ts",
   "scripts": {
     "test": "echo \"Teste\""
   },
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/jefferson-developer-it/FoxWeb#readme",
   "dependencies": {
+    "@types/node": "^18.11.18",
     "xhr2": "^0.2.1"
   }
 }

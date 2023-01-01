@@ -1,14 +1,11 @@
-import { FoxModule } from "../JS/FoxWeb.js";
+import FoxModule from "../JS/FoxWeb.js";
 
-const base = FoxModule.HTTP.RequestInstance("https://jsonplaceholder.typicode.com/")
-const api = base.instance("/todos");
+const myQuery = {
+    name: "jeff",
+    token: "xxx-xxx.23.aa"
+}
 
-api.send("/1", {
-}).then(d=>{
-    console.log(d.resJSON);
-})
-
-api.send("/2", {
-}).then(d=>{
-    console.log(d.resJSON);
-})
+const stringQuery = FoxModule.HTTP.QueryParser(myQuery)
+// ?name=jeff&token=xxx-xxx.23.aa
+const objQuery = FoxModule.HTTP.QueryParser("?app=Fox", "object")
+// {app: "Fox"}

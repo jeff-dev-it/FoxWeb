@@ -1,6 +1,6 @@
 import { $FoxElm } from "../class/FoxElm.js";
-import { $Foxes as FoxesGet } from "../class/FoxesGet.js";
-import { $Fox as FoxGet } from "../class/FoxGet.js";
+import { $Foxes } from "../class/FoxesGet.js";
+import { $Fox } from "../class/FoxGet.js";
 import { SettingsFox } from "../interfaces/Interface.Fox";
 import { FoxElement } from "../interfaces/Types.Fox";
 
@@ -21,7 +21,7 @@ import { FoxElement } from "../interfaces/Types.Fox";
  * @returns 
  */
 export function $FoxGet(query: string){
-    return new FoxGet(query);
+    return new $Fox(query);
 }
 /**
  * 
@@ -37,7 +37,7 @@ export function $(legacyElement: FoxElement){
  * @returns 
  */
 export function $FoxesGet(query: string){
-    return new FoxesGet(query);
+    return new $Foxes(query);
 }
 /**
  * 

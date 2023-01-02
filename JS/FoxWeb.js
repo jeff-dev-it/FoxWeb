@@ -6,7 +6,6 @@ import { SendRequest } from "./HTTP/request.js";
 import "./preload.js";
 import QueryParser from "./HTTP/queryParser.js";
 import RequestInstance from "./HTTP/instance.js";
-
 export const FoxModule = {
     DOM: {
         $,

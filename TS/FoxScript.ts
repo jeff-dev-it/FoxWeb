@@ -6,8 +6,9 @@ import { MaskText, FindAllIndex, GenRandom, GenRandomText, RoundNum, RoundNumDow
 import RequestInstance from "./HTTP/instance.js";
 import QueryParser from "./HTTP/queryParser.js";
 import { SendRequest } from "./HTTP/request.js";
-import { IsArray, IsMatriz, IsNum, IsObj } from "./functions/VerifyTypes.js";
+import { IsArray, IsMatriz, IsNum, IsObj} from "./functions/VerifyTypes.js";
 import "./preload.js";
+
 const script = `
     function Load(){
         // Class
@@ -55,5 +56,6 @@ const script = `
 
     FoxScript = Load()
 
-`;
-eval(script);
+`
+
+eval(script)

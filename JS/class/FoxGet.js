@@ -1,5 +1,5 @@
-import { $FoxElm as $ } from "./FoxElm.js";
-export class $Fox extends $ {
+import { $FoxElm } from "./FoxElm.js";
+export class $Fox extends $FoxElm {
     /**
      * @param {string} query
      */

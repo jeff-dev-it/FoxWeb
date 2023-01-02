@@ -5,17 +5,28 @@
 FoxWeb is a JS script that aims to make JS easier. It can be used on both frontend and backend.
 
 - In the browser
-```
+```html
 <script type="module">
-    import {FoxModule} from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
+    import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 
     ...
 </script>
 ```
+> In version 3.1, FoxScript came out, an integrated version for the browser, unlike the example above, you can access it outside the module
+
+```html
+<head>
+     <script>
+             var FoxScript = {};
+     </script>
+     <script src="../JS/FoxScript.js" type="module"></script>
+</head>
+```
+FoxScript will be equivalent to FoxModule, you can use everything according to the documentation below, replacing FoxModule with FoxScript.
 
 - In the Deno
-```
-import `{FoxModule}` from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
+```js
+import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 ```
 <a href="https://github.com/jefferson-developer-it/FoxWebNode">For NodeJS read here</a>
 
@@ -30,6 +41,7 @@ import `{FoxModule}` from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/Fo
 |$VerifyTypes|Object with type checker|
 |$Math|Use the math library more easily|
 |$Utils|Make some tasks easier|
+|HTTP|Perform HTTP Requests|
 
 ## SUN
 > Works in browser only.
@@ -42,7 +54,7 @@ import `{FoxModule}` from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/Fo
 |$Create|Create a DOM object|
 
 * Transform DOM element into DOM FOX
-```
+```js
 import FoxModule from "./FoxWeb/sources/JS/FoxWeb.js";
 const {DOM} = FoxModule;
 const myElement = document.getElementById("my-element");
@@ -52,11 +64,11 @@ const myFoxElement = DOM.$(myElement);
 
 
 * Get a FOX DOM
-```
+```js
 const myFoxElement = DOM.$Fox("#my-element");
 ```
 * Create a FOX DOM
-```
+```js
 const myFoxElement = DOM.$Create("div", {
     id: "example-create",
     class: ["card", "Hello"],
@@ -68,7 +80,7 @@ const myFoxElement = DOM.$Create("div", {
 
 ## DOM manipulation
 
-```
+```js
 element.$Env("event_name", (e)=>{...});
 .OnPress(func) // Execute func on click event
 .OnRightPress(func) // Execute func on right click event
@@ -104,7 +116,7 @@ element.$Env("event_name", (e)=>{...});
 .SetSettings(settings) // Add settings
 ```
 In the element returned by $Foxes these properties can be accessed to manipulate all of that array, obs. Some of these methods are not present in Foxes. Only on individual items.
-```
+```js
 elmFoxes[0]
 // or
 elmFoxes.elms[0]
@@ -112,7 +124,7 @@ elmFoxes.elms[0]
 
 ### About SetSettings
 The parameter value should be something like:
-```
+```js
 {
     id?: String, // id
     typeBtn?: "button" | "submit" // button type
@@ -140,7 +152,7 @@ The parameter value should be something like:
 
 * isArray
 
-```
+```js
 const languages ​​= ["JS", "Go", "Rust"];
 const myFavLang = languages[1]; // Go
 
@@ -150,7 +162,7 @@ console.log($VerifyTypes.IsArray(myFavLang)) // false
 
 * isNum
 
-```
+```js
 const {IsNum} = $VerifyTypes;
 const num1 = 10
 const num2 = "a"
@@ -162,7 +174,7 @@ console.log(IsNum(num1), IsNum(num2), IsNum(num3))
 ```
 
 * isObject
-```
+```js
 const foxInfo = {
     Author: "Jefferson",
     packageName: "FoxWeb"
@@ -186,7 +198,7 @@ console.log(IsObj(foxInfo), IsObj(languages))
 |GenRandom|Generate a random number|
 
 * RoundNum Examples
-```
+```js
 const n1 = 5.5
 const n2 = 5.4
 
@@ -201,7 +213,7 @@ console.log(
 ```
 
 * GenRandom
-```
+```js
 const randomNum = GenRandom(100, 110);
 console.log(randomNum);
 // output: Any number between 100 and 110
@@ -217,7 +229,7 @@ console.log(randomNum);
 |MaskText|Mask a text|
 
 * FindAllIndex
-```
+```js
 const languages ​​= ["JS", "Go", "Rust", "JS"];
 const language_str = "JS, Go, Rust";
 
@@ -228,7 +240,7 @@ console.log(FindAllIndex(languages_str, "S")); // [1, 10]
 ```
 
 * GenRandomText
-```
+```js
 const text = GenRandomText(10);
 const text_mask = GenRandomText(10, {
     noUpChar: true, //Text will not be capitalized
@@ -247,7 +259,7 @@ const text_mask2 = GenRandomText(10, {
 
 * MaskText
 
-```
+```js
 const phone_number = "55000000000000"
 const masked = MaskText(phone_number, "+## (##) #####-####)";
 
@@ -262,7 +274,7 @@ ___
 ### In the number constructor
 - Added format(x) method - This method changes from 1 to "01", "001".
 - Added iterator;
-```
+```js
 console.log(10..format("3")); // 010
 consolee.log([...3], [...-2]); // [0, 1, 2, 3], [0, -1, -2]
 ```
@@ -275,3 +287,51 @@ consolee.log([...3], [...-2]); // [0, 1, 2, 3], [0, -1, -2]
 - Added toNum method (convert string to num)
 - Added toInt method (convert string to int num)
 - Added method toFloat(fractionsDigits) (convert string to float string (yes to string, example: "1"..ToFloat(2) -> "1.00", "1.234"..toFloat(2) -> "1.23" ))
+
+# HTTP
+> Use SendRequest to send requests
+```js
+const res = FoxModule.HTTP.SendRequest("http://example.com", {
+     body: {},
+     method: "GET",
+     headers: {
+         "content-type": "application/json"
+     },
+     query: {
+         labelName: "test"
+     }
+})
+
+// FoxModule.HTTP.SendRequest(uri, config?)
+
+
+res.then(rs=>{
+     console.log(rs.res);
+     console.log(rs.resJSON); // Converted JSON object
+})
+```
+
+> Create instances to facilitate your requests:
+```js
+const base = FoxModule.HTTP.RequestInstance("http://www.example.com")
+const api = base.instance("/list");
+
+api.send("/1").then(d=>{
+     console.log(d.resJSON);
+})
+
+// use api.instance to create a new instance
+```
+> Convert query:
+```js
+const myQuery = {
+     name: "jeff",
+     token: "xxx-xxx.23.aa"
+}
+
+const stringQuery = FoxModule.HTTP.QueryParser(myQuery)
+// or: FoxModule.HTTP.QueryParser(myQuery, "string")
+// ?name=jeff&token=xxx-xxx.23.aa
+const objQuery = FoxModule.HTTP.QueryParser("?app=Fox", "object")
+// {app: "Fox"}
+```

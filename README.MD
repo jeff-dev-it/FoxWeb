@@ -25,11 +25,7 @@ FoxWeb is a JS script that aims to make JS easier. It can be used on both fronte
 FoxScript will be equivalent to FoxModule, you can use everything according to the documentation below, replacing FoxModule with FoxScript.
 
 - In the Deno
-<<<<<<< HEAD
 ```
-=======
-```js
->>>>>>> 318a363274816ad912723fd737f60efe7186c0cb
 import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 ```
 <a href="https://github.com/jefferson-developer-it/FoxWebNode">For NodeJS read here</a>

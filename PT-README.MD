@@ -23,9 +23,7 @@ FoxWeb é um script JS que visa tornar o JS mais fácil. Pode ser usado tanto no
     <script src="../JS/FoxScript.js" type="module"></script>
 </head>
 ```
-<<<<<<< HEAD
-import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
-=======
+
 O FoxScript será equivalente ao FoxModule, você poderá usar tudo conforme a documentação abaixo, trocando FoxModule por FoxScript.
 
 - No Deno

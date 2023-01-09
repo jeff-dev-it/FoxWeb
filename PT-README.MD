@@ -5,7 +5,7 @@
 FoxWeb é um script JS que visa tornar o JS mais fácil. Pode ser usado tanto no front-end quanto no back-end.
 
 - No navegador
-```
+```html
 <script type="module">
     import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
 
@@ -13,9 +13,25 @@ FoxWeb é um script JS que visa tornar o JS mais fácil. Pode ser usado tanto no
 </script>
 ```
 
-- No Deno
+> Na versão 3.1 saiu o FoxScript, uma versão integrada para navegador, diferente do exemplo acima você pode ter acesso fora do módulo
+
+```html
+<head>
+    <script>
+            var FoxScript = {};
+    </script>
+    <script src="../JS/FoxScript.js" type="module"></script>
+</head>
 ```
+<<<<<<< HEAD
 import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
+=======
+O FoxScript será equivalente ao FoxModule, você poderá usar tudo conforme a documentação abaixo, trocando FoxModule por FoxScript.
+
+- No Deno
+```js
+import {FoxModule} from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb@latest/JS/FoxWeb.js"
+>>>>>>> 318a363274816ad912723fd737f60efe7186c0cb
 ```
 <a href="https://github.com/jefferson-developer-it/FoxWebNode">Para NodeJS leia aqui</a>
 
@@ -43,7 +59,7 @@ import FoxModule from "https://cdn.jsdelivr.net/gh/jefferson-developer-it/FoxWeb
 |$Create|Criar um objeto DOM|
 
 * Transforme o elemento DOM em DOM FOX
-```
+```js
 import FoxModule from "./FoxWeb/sources/JS/FoxWeb.js";
 const {DOM} = FoxModule;
 const meuElemento = document.getElementById("meu-elemento");
@@ -53,11 +69,11 @@ const meuFoxElement = DOM.$(meuElemento);
 
 
 * Obtenha um DOM FOX
-```
+```js
 const meuFoxElement = DOM.$Fox("#meu-elemento");
 ```
 * Crie um DOM FOX
-```
+```js
 const myFoxElement = DOM.$Create("div", {
     id: "exemplo-criar",
     class: ["cartão", "Olá"],
@@ -69,7 +85,7 @@ const myFoxElement = DOM.$Create("div", {
 
 ## Manipulação DOM
 
-```
+```js
 element.$Env("evento_nome", (e)=>{...});
 .OnPress(func) // Executa func no evento de click
 .OnRightPress(func) // Executa func no evento de click com botão direito
@@ -105,7 +121,7 @@ element.$Env("evento_nome", (e)=>{...});
 .SetSettings(settings) // Adicione configurações
 ```
 No elemento retornado por $Foxes essas propriedades poderão ser acessadas para manipular todos daquele array, obs. Alguns desses métodos não estão presente no foxes. Apenas nos itens individuais.
-```
+```js
 elmFoxes[0] 
 // ou
 elmFoxes.elms[0] 
@@ -113,7 +129,7 @@ elmFoxes.elms[0]
 
 ### Sobre o SetSettings
 O valor do parâmetro deve ser algo como:
-```
+```js
 {
     id?: String, // id
     typeBtn?: "button" | "submit" // tipo de botão
@@ -141,7 +157,7 @@ O valor do parâmetro deve ser algo como:
 
 * IsArray
 
-```
+```js
 const linguagens = ["JS", "Go", "Rust"];
 const minhaFavLang = linguagens[1]; // Vai
 
@@ -151,7 +167,7 @@ console.log($VerifyTypes.IsArray(minhaFavLang)) // false
 
 * isNum
 
-```
+```js
 const {IsNum} = $VerifyTypes;
 const num1 = 10
 const num2 = "a"
@@ -163,7 +179,7 @@ console.log(IsNum(num1), IsNum(num2), IsNum(num3))
 ```
 
 * IsObject
-```
+```js
 const foxInfo = {
     autor: "Jefferson",
     packageName: "FoxWeb"
@@ -187,7 +203,7 @@ console.log(IsObj(foxInfo), IsObj(linguagens))
 |GenRandom|Gerar um número aleatório|
 
 * Exemplos RoundNum
-```
+```js
 const n1 = 5,5
 const n2 = 5,4
 
@@ -202,7 +218,7 @@ console.log(
 ```
 
 * GenRandom
-```
+```js
 const randomNum = GenRandom(100, 110);
 console.log(randomNum);
 // output: Qualquer número entre 100 e 110
@@ -218,7 +234,7 @@ console.log(randomNum);
 |MaskText|Mascarar um texto|
 
 * FindAllIndex
-```
+```js
 const languages = ["JS", "Go", "Rust", "JS"];
 const language_str = "JS, Go, Rust";
 
@@ -229,7 +245,7 @@ console.log(FindAllIndex(languages_str, "S")); // [1, 10]
 ```
 
 * GenRandomText
-```
+```js
 const texto = GenRandomText(10);
 const text_mask = GenRandomText(10, {
     noUpChar: true, //O texto não terá letras maiúsculas
@@ -248,7 +264,7 @@ const text_mask2 = GenRandomText(10, {
 
 * MaskText
 
-```
+```js
 const phone_number = "5500000000000"
 const mascarado = MaskText(número_telefone, "+## (##) #####-####)";
 
@@ -263,7 +279,7 @@ ___
 ### No construtor de número
 - Método format(x) adicionado - Este método muda de 1 para "01", "001".
 - Iterador Adicionado;
-```
+```js
 console.log(10..format("3")); // 010
 consolee.log([...3], [...-2]); // [0, 1, 2, 3], [0, -1, -2]
 ```

@@ -15,7 +15,7 @@ import { FoxElement, FoxENV, FoxEvents } from "../interfaces/Types.Fox";
 */
 export class $FoxElm{  
     elm!: FoxElement;
-    #oldContent!: string | undefined;
+    private oldContent!: string | undefined;
     
     /** 
      * @param {FoxElement | HTMLElement} elm 
@@ -119,7 +119,7 @@ export class $FoxElm{
      */
     SetContent(t: "html" | "txt", value: string, append: boolean = false){
         let elm_:any = this.elm;
-        this.#oldContent = this.GetContent("html");
+        this.oldContent = this.GetContent("html");
 
         if(t == "html" && !append){
             elm_["innerHTML"] = value;
@@ -164,7 +164,7 @@ export class $FoxElm{
      * @param {"html" | "txt"} t 
      */
     ReturnContent(t: "html" | "txt"){
-        this.SetContent(t, this.#oldContent || "");
+        this.SetContent(t, this.oldContent || "");
     }
     // Child/Feather
     /**
